@@ -29,10 +29,6 @@ RUN apt-get update && apt-get install -y \
 # Menginstal Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Menginstal Node.js (dibutuhkan untuk build asset Vite/Tailwind)
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
-    && apt-get install -y nodejs
-
 # Mengatur direktori kerja
 WORKDIR /var/www/html
 
@@ -42,16 +38,11 @@ COPY composer.json composer.lock ./
 # Menginstal dependensi Laravel
 RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --ignore-platform-reqs
 
-# Menyalin package.json dan menginstal dependensi NPM
-COPY package.json package-lock.json* ./
-RUN npm install
-
 # Menyalin seluruh file proyek ke dalam kontainer
 COPY . .
 
-# Melakukan dump-autoload dan build asset
+# Melakukan dump-autoload
 RUN composer dump-autoload --optimize --no-scripts
-RUN npm run build
 
 # Menyesuaikan permission folder agar dapat ditulis oleh web server (Apache)
 RUN chown -R www-data:www-data /var/www/html \
