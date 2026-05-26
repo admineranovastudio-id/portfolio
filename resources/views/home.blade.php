@@ -39,7 +39,7 @@
             <div class="about-image" data-animate="fade-right">
                 @if($about && $about->image)
                     <div style="width: 100%; height: 100%; border-radius: 12px; overflow: hidden; position: relative; z-index: 2;">
-                        <img src="{{ Storage::url($about->image) }}" alt="Eka Rizky Nauvan Nurilham" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ asset('storage/' . $about->image) }}" alt="Eka Rizky Nauvan Nurilham" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 @else
                     <div class="image-placeholder">
@@ -128,7 +128,7 @@
                class="project-card {{ $project->featured ? 'featured' : '' }}">
                 <div class="project-image">
                     @if($project->mockup_image)
-                        <img src="{{ Storage::url($project->mockup_image) }}" alt="{{ $project->title }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="{{ asset('storage/' . $project->mockup_image) }}" alt="{{ $project->title }}" style="width: 100%; height: 100%; object-fit: cover;">
                     @else
                         <div class="project-image-placeholder">
                             <span class="mono">{{ $project->slug }}_mockup.webp</span>

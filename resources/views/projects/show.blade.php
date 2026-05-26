@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $project->title . ' | Eka Rizky')
+@section('title', 'Portfolio | Eka Rizky')
 
 @section('content')
 <section class="project-detail">
@@ -44,7 +44,7 @@
         <div class="detail-gallery" data-animate="fade-up">
             @if($project->mockup_image)
                 <div class="gallery-item" style="padding: 0; background: transparent; border: none; grid-column: 1 / -1;">
-                    <img src="{{ Storage::url($project->mockup_image) }}" alt="{{ $project->title }} Main Mockup" style="width: 100%; border-radius: 16px;">
+                    <img src="{{ asset('storage/' . $project->mockup_image) }}" alt="{{ $project->title }} Main Mockup" style="width: 100%; border-radius: 16px;">
                 </div>
             @else
                 <div class="gallery-item">
@@ -67,7 +67,7 @@
             <div class="extra-gallery-grid" style="display: flex; flex-direction: column; gap: 2rem;">
                 @foreach($project->gallery as $image)
                 <div class="gallery-image-wrapper">
-                    <img src="{{ Storage::url($image) }}" alt="{{ $project->title }} Gallery" style="width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--border);">
+                    <img src="{{ asset('storage/' . $image) }}" alt="{{ $project->title }} Gallery" style="width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--border);">
                 </div>
                 @endforeach
             </div>
