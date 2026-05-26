@@ -40,7 +40,7 @@ WORKDIR /var/www/html
 COPY composer.json composer.lock ./
 
 # Menginstal dependensi Laravel
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --ignore-platform-reqs
 
 # Menyalin package.json dan menginstal dependensi NPM
 COPY package.json package-lock.json* ./
