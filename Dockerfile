@@ -1,5 +1,5 @@
-# Gunakan image PHP 8.3 dengan Apache
-FROM php:8.3-apache
+# Gunakan image PHP 8.4 dengan Apache
+FROM php:8.4-apache
 
 # Mengaktifkan mod_rewrite Apache (wajib untuk Laravel)
 RUN a2enmod rewrite
