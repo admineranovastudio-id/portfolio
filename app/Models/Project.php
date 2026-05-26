@@ -10,7 +10,8 @@ class Project extends Model
 
     protected $casts = [
         'tech' => 'array',
-
+        'challenges' => 'array',
+        'outcomes' => 'array',
         'gallery' => 'array',
         'featured' => 'boolean',
     ];
