@@ -50,7 +50,7 @@ RUN npm install
 COPY . .
 
 # Melakukan dump-autoload dan build asset
-RUN composer dump-autoload --optimize
+RUN composer dump-autoload --optimize --no-scripts
 RUN npm run build
 
 # Menyesuaikan permission folder agar dapat ditulis oleh web server (Apache)
